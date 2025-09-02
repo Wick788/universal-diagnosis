@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report View - Universal Diagnosis Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="assets/logo.svg" />
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-green-50 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-10">
+    <nav class="container mx-auto flex items-center justify-between py-4 px-4 md:px-0">
+      <div class="flex items-center gap-2">
+        <img src="assets/logo.svg" alt="Platform Logo" class="h-8 w-8" />
+        <span class="font-bold text-xl text-blue-700">Universal Diagnosis</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="patient-dashboard.html" class="text-blue-600 hover:text-blue-800">Back to Dashboard</a>
+        <a href="index.html" class="text-blue-600 hover:text-blue-800">Logout</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex-1 container mx-auto py-8 px-4">
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <!-- Patient Information -->
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">Patient Information</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <p class="text-sm text-gray-500">Name</p>
+            <p class="font-medium">John Doe</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Patient ID</p>
+            <p class="font-medium">PID12345</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Date of Birth</p>
+            <p class="font-medium">1980-01-15</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Report Information -->
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">Report Information</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div>
+            <p class="text-sm text-gray-500">Report ID</p>
+            <p class="font-medium" id="reportId">RPT12345</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Date Issued</p>
+            <p class="font-medium" id="dateIssued">2024-03-15</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Issuing Institution</p>
+            <p class="font-medium" id="institution">City Hospital</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Report Type</p>
+            <p class="font-medium" id="reportType">Blood Test</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Findings -->
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">Findings</h2>
+        <div class="bg-gray-50 rounded-lg p-4">
+          <p class="text-gray-700" id="findings">Normal blood sugar levels.</p>
+        </div>
+      </section>
+
+      <!-- Doctor's Notes -->
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">Doctor's Notes</h2>
+        <div class="bg-gray-50 rounded-lg p-4">
+          <p class="text-gray-700" id="doctorNotes">Monitor diet regularly.</p>
+        </div>
+      </section>
+
+      <!-- Action Buttons -->
+      <section class="flex justify-end gap-4">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+          Download Report
+        </button>
+        <button class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+          Print Report
+        </button>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Mock Data
+    const mockReports = {
+      "RPT12345": {
+        dateIssued: "2024-03-15",
+        institution: "City Hospital",
+        reportType: "Blood Test",
+        findings: "Normal blood sugar levels.",
+        doctorNotes: "Monitor diet regularly."
+      },
+      "RPT12346": {
+        dateIssued: "2024-03-10",
+        institution: "General Hospital",
+        reportType: "X-Ray",
+        findings: "No fractures detected.",
+        doctorNotes: "Follow up in 2 weeks."
+      },
+      "RPT12347": {
+        dateIssued: "2024-02-28",
+        institution: "City Hospital",
+        reportType: "MRI",
+        findings: "Normal brain scan results.",
+        doctorNotes: "No further action required."
+      }
+    };
+
+    // Get report ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const reportId = urlParams.get('id');
+
+    // Populate report data
+    if (reportId && mockReports[reportId]) {
+      const report = mockReports[reportId];
+      document.getElementById('reportId').textContent = reportId;
+      document.getElementById('dateIssued').textContent = report.dateIssued;
+      document.getElementById('institution').textContent = report.institution;
+      document.getElementById('reportType').textContent = report.reportType;
+      document.getElementById('findings').textContent = report.findings;
+      document.getElementById('doctorNotes').textContent = report.doctorNotes;
+    } else {
+      // Handle invalid report ID
+      document.querySelector('main').innerHTML = `
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+          <h2 class="text-xl font-bold text-gray-800 mb-4">Report Not Found</h2>
+          <p class="text-gray-600 mb-4">The requested report could not be found.</p>
+          <a href="patient-dashboard.html" class="text-blue-600 hover:text-blue-800">Back to Dashboard</a>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html> 

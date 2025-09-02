@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Institution Dashboard - Universal Diagnosis Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="assets/logo.svg" />
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-green-50 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-10">
+    <nav class="container mx-auto flex items-center justify-between py-4 px-4 md:px-0">
+      <div class="flex items-center gap-2">
+        <img src="assets/logo.svg" alt="Platform Logo" class="h-8 w-8" />
+        <span class="font-bold text-xl text-blue-700">Universal Diagnosis</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-gray-700">Welcome, <span class="font-semibold">City Hospital</span>!</span>
+        <a href="index.html" class="text-blue-600 hover:text-blue-800">Logout</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex-1 container mx-auto py-8 px-4">
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h1 class="text-2xl font-bold text-gray-800 mb-6">Institution Dashboard</h1>
+
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-blue-50 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-blue-800 mb-2">Total Reports</h3>
+          <p class="text-3xl font-bold text-blue-600">1,234</p>
+        </div>
+        <div class="bg-green-50 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-green-800 mb-2">Active Patients</h3>
+          <p class="text-3xl font-bold text-green-600">567</p>
+        </div>
+        <div class="bg-purple-50 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-purple-800 mb-2">Pending Reports</h3>
+          <p class="text-3xl font-bold text-purple-600">89</p>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">Recent Activity</h2>
+        <div class="bg-gray-50 rounded-lg p-4">
+          <ul class="space-y-4">
+            <li class="flex items-center gap-4">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <div>
+                <p class="text-gray-700">New report uploaded for Patient ID: PID12345</p>
+                <p class="text-sm text-gray-500">2 hours ago</p>
+              </div>
+            </li>
+            <li class="flex items-center gap-4">
+              <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <div>
+                <p class="text-gray-700">Report viewed by Patient ID: PID12346</p>
+                <p class="text-sm text-gray-500">5 hours ago</p>
+              </div>
+            </li>
+            <li class="flex items-center gap-4">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <div>
+                <p class="text-gray-700">New report uploaded for Patient ID: PID12347</p>
+                <p class="text-sm text-gray-500">1 day ago</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Quick Actions -->
+      <section>
+        <h2 class="text-xl font-bold text-gray-800 mb-4">Quick Actions</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            Upload New Report
+          </button>
+          <button class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+            View All Reports
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html> 
